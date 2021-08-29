@@ -85,7 +85,7 @@ RegisterCommand('blipcolour', function(source, args, raw)
 
 	customizePlayerBlip(source, {colour = colour})
 
-	TriggerClientEvent("custom_blips:saveSettings", player, playerBlips[source])
+	TriggerClientEvent("custom_blips:saveSettings", source, playerBlips[source])
 
 	TriggerClientEvent("chat:addMessage", source, {
 		color = colour,
