@@ -3,6 +3,10 @@ RegisterNetEvent("custom_blips:saveSettings", function(settings)
 end)
 
 Citizen.CreateThread(function()
+	TriggerEvent("chat:addSuggestion", "/blipcolour", "Change blip colour", {
+		{name = "colour", "Can be specified with RGB (231 151 184) or a hex code (e797b8)"}
+	})
+
 	local settings = json.decode(GetResourceKvpString("blipSettings"))
 
 	if settings then
