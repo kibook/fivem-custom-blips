@@ -26,6 +26,12 @@ local function customizePlayerBlip(player, settings)
 	end
 end
 
+local function getBlipSettings(player)
+	player = tostring(player)
+
+	return playerBlips[player]
+end
+
 AddEventHandler('onResourceStart', function(resourceName)
 	if GetCurrentResourceName() == resourceName then
 		for _, player in ipairs(GetPlayers()) do
@@ -85,7 +91,7 @@ RegisterCommand('blipcolour', function(source, args, raw)
 
 	customizePlayerBlip(source, {colour = colour})
 
-	TriggerClientEvent("custom_blips:saveSettings", source, playerBlips[source])
+	TriggerClientEvent("custom_blips:saveSettings", source, getBlipSettings(source))
 
 	TriggerClientEvent("chat:addMessage", source, {
 		color = colour,
